@@ -1,1 +1,1 @@
-# ai-test-wiki
+# exerp-platform-ai-toolkit
