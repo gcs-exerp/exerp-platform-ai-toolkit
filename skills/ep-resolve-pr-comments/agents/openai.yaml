@@ -1,0 +1,4 @@
+interface:
+  display_name: "EP Resolve PR Comments"
+  short_description: "Review and address current-branch PR comments"
+  default_prompt: "Use $ep-resolve-pr-comments to review unresolved feedback on the current branch’s open pull request."
