@@ -8,7 +8,7 @@ These skills are created for exerp-platform and are based on compound-engineerin
 
 Steps to use:
 
-Add github repo https://github.com/gcs-exerp/exerp-platform-ai-toolkit as a git submodule inside exerp-platform repo.
+- Add github repo `https://github.com/gcs-exerp/exerp-platform-ai-toolkit` as a git submodule inside exerp-platform repo.
 git submodule add .exerp-platform-ai-toolkit https://github.com/gcs-exerp/exerp-platform-ai-toolkit
 Go to .exerp-platform-ai-toolkit/config.yaml and change pipeline-prefix as per your pipeline prefix
 Start implementing a ticket using Research-Plan-Implement flow
