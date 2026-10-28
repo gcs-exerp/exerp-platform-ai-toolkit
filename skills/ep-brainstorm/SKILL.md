@@ -39,6 +39,16 @@ Read all available pages when pagination indicates more results. Distinguish con
 
 Use the issue summary, description, status, labels, components, acceptance criteria, Jira comments, relevant Confluence content, and repository research as the grounding context. Preserve exact uncertainty: unavailable fields remain unavailable.
 
+## Repository Configuration
+
+Use `.exerp-platform-ai-toolkit/config.yaml` as the authoritative repository configuration for this skill.
+
+- Read `pipeline-prefix` from this file for branch creation.
+- Read `docs_root` from this file for the research-plan artifact location.
+- Do not read these values from `.compound-engineering/config.yaml` or `.compound-engineering/config.local.yaml`.
+- Validate `docs_root` using the compound-engineering rules: it must resolve to a repository-relative directory inside the repository, and must not be the repository root or any path under `.git/`.
+- If `docs_root` is missing or invalid, stop and report that the research-plan location is unavailable.
+
 ## Branch Handling
 
 After the Jira issue has been read, inspect the current branch with:
@@ -49,7 +59,7 @@ git branch --show-current
 
 ### When the current branch is `develop`
 
-1. Read `pipeline-prefix` from the repository's `.compound-engineering/config.yaml`. Do not use `config.local.yaml` for this value.
+1. Read `pipeline-prefix` from `.exerp-platform-ai-toolkit/config.yaml`.
 2. If `pipeline-prefix` is missing, empty, or invalid, stop and report that the branch cannot be created because the configuration is unavailable.
 3. Derive a meaningful short description from the verified Jira summary.
 4. Normalize the description into a safe branch slug: lowercase, hyphen-separated words, and no unsupported characters.
@@ -62,13 +72,20 @@ If the target branch already exists, do not overwrite or delete it. Report the c
 
 ### When the current branch is not `develop`
 
-Do not create or switch branches. Continue with the research-plan workflow.
+Verify that the current branch name contains the exact resolved Jira key, such as `DEV-66114`. If it does, do not create or switch branches and continue with the research-plan workflow.
+
+If the current branch does not contain the resolved Jira key, pause and ask the user to either:
+
+- Switch to a branch specific to the Jira key currently being researched; or
+- Switch to `develop` and continue, which allows this skill to create the configured Jira branch.
+
+Do not continue research until the branch context is corrected.
 
 ## Brainstorming and Plan Creation
 
-Internally apply the `compound-engineering:ce-brainstorm` skill to the Jira-backed problem. Follow its dialogue, scope classification, artifact-root resolution, plan-writing, and readiness-check rules. The Jira issue is the initial feature/problem description; do not bypass required repository grounding or decision gates.
+Internally apply the `compound-engineering:ce-brainstorm` skill to the Jira-backed problem. Follow its dialogue, scope classification, plan-writing, and readiness-check rules. For artifact-root resolution, override the skill's default config lookup and use the validated `docs_root` from `.exerp-platform-ai-toolkit/config.yaml`; do not fall back to `.compound-engineering/config.yaml` or `docs/`. The Jira issue is the initial feature/problem description; do not bypass required repository grounding or decision gates.
 
-The result must be a requirements-only research plan saved under the compound-engineering skill's configured artifact location.
+The result must be a requirements-only research plan saved under the `docs_root` resolved from `.exerp-platform-ai-toolkit/config.yaml`.
 
 ### Plan filename
 

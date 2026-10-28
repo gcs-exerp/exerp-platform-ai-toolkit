@@ -1,0 +1,4 @@
+interface:
+  display_name: "EP Plan"
+  short_description: "Create Jira-prefixed implementation plans"
+  default_prompt: "Use $ep-plan to create an implementation plan from a Jira ticket or research plan."

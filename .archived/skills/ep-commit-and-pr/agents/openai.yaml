@@ -1,0 +1,4 @@
+interface:
+  display_name: "EP Commit and PR"
+  short_description: "Commit session-scoped changes and open a template-compliant PR"
+  default_prompt: "Use $ep-commit-and-pr to commit only changes made during this session and open a compliant pull request."

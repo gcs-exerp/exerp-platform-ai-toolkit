@@ -1,0 +1,4 @@
+interface:
+  display_name: "EP Work"
+  short_description: "Implement an Exerp plan and open a PR"
+  default_prompt: "Use $ep-work to implement the supplied Exerp implementation plan, commit it, and open a pull request."
