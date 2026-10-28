@@ -1,0 +1,4 @@
+interface:
+  display_name: "EP Compound"
+  short_description: "Capture verified Jira work as durable learning"
+  default_prompt: "Use $ep-compound with a Jira issue to capture verified project learnings and optionally update only its description."

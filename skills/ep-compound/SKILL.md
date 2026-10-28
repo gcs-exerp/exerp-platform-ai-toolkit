@@ -16,7 +16,7 @@ description context.
 1. Resolve the Jira key from the invocation arguments. If no Jira key is available in
    the current session, ask the user for it. Accept `DEV-<digits>`; do not infer a
    key from unrelated text. If the key cannot be verified, stop.
-2. Read `.compound-engineering/config.yaml` from the repository root. Do not use a
+2. Read `.exerp-platform-ai-toolkit/config.yaml` from the repository root. Do not use a
    local override for these settings. Resolve `docs_root` using the same rules as
    `ce-compound`; if it is unset, use its documented default. Read `kickoff-template`
    from this file only when kickoff notes are enabled. A missing or unusable template
@@ -88,7 +88,7 @@ skipped because a matching solution already exists:
    report that kickoff notes already exist and stop this kickoff flow. Do not render
    replacement notes, ask to update them, or call an update tool.
 4. If kickoff notes are absent, read the file configured by `kickoff-template` in
-   `.compound-engineering/config.yaml`, render it using only the Jira key, local
+   `.exerp-platform-ai-toolkit/config.yaml`, render it using only the Jira key, local
    research/plan documents, and any newly generated compound result, and preserve
    the template's structure. Do not invent missing values.
 5. Pass the generated Markdown directly to

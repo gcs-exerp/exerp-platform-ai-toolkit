@@ -1,0 +1,15 @@
+# root folder for skills to put research and planning documents
+docs_root: ./.exerp-platform-ai-toolkit/research-docs
+
+# pipeline prefix for skills to check out a new branch
+pipeline-prefix: pipeline/gcs
+
+# templates
+commit-template: ./.exerp-platform-ai-toolkit/templates/commit-template.md
+pr-template: ./.exerp-platform-ai-toolkit/templates/pr-template.md
+kickoff-template: ./.exerp-platform-ai-toolkit/templates/kickoff-template.md
+
+# skill level
+
+# ep-work
+commit-and-pr: on

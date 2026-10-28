@@ -1,0 +1,19 @@
+interface:
+  display_name: "EP Brainstorm"
+  short_description: "Research and brainstorm from a Jira issue"
+  default_prompt: "Use $ep-brainstorm with Jira issue DEV-XXXXX to create a research plan."
+
+dependencies:
+  tools:
+    - type: "mcp"
+      value: "mcp__jira__jira_get_issue"
+      description: "Fetch the Jira issue used as the research and brainstorming source."
+    - type: "mcp"
+      value: "mcp__jira__jira_get_issue_links"
+      description: "Inspect Jira links for relevant Confluence pages."
+    - type: "mcp"
+      value: "mcp__jira__jira_get_comments"
+      description: "Read Jira comments for additional issue context and conflicting requirements."
+    - type: "mcp"
+      value: "mcp__jira__confluence_get_page"
+      description: "Read relevant linked Confluence page content."
